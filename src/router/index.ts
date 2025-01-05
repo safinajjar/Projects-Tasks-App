@@ -1,21 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router/auto'
+import { routes } from 'vue-router/auto-routes'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: HomeView,
-    },
-    {
-      path: '/projects',
-      name: 'Projects',
-      // dynamic import
-      component: () => import('@/views/ProjectsView.vue'),
-    },
-  ],
+  routes,
 })
 
 export default router
