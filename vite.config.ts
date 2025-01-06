@@ -7,6 +7,7 @@ import vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -24,7 +25,7 @@ export default defineConfig({
         /\.vue\?vue/, // .vue
         /\.md$/, // .md
       ],
-      imports: ['vue', 'vue-router'],
+      imports: ['vue', VueRouterAutoImports],
       dts: true,
       viteOptimizeDeps: true,
     }),
