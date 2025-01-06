@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import { Button } from '@/components/ui/button'
-import SidebarLinks from './SidebarLinks.vue'
-
 const links = [
   { icon: 'lucide:house', title: 'Dashboard', to: '/' },
   { icon: 'lucide:building-2', title: 'Projects', to: '/projects' },
