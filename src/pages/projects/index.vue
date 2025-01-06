@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 import supabase from '@/lib/supabaseClient'
-import { ref } from 'vue'
+import { h, ref } from 'vue'
 import type { Tables } from '../../../database/types'
+import type { ColumnDef } from '@tanstack/vue-table'
+import DataTable from '@/components/ui/data-table/DataTable.vue'
+import { RouterLink } from 'vue-router'
 
 const projects = ref<Tables<'projects'>[] | null>(null)
 
@@ -14,14 +17,41 @@ const projects = ref<Tables<'projects'>[] | null>(null)
 
   projects.value = data
 })()
+
+const columns: ColumnDef<Tables<'projects'>>[] = [
+  {
+    accessorKey: 'name',
+    header: () => h('div', {}, 'Name'),
+    cell: ({ row }) =>
+      h(
+        RouterLink,
+        { to: `/projects/${row.original.slug}`, class: 'font-medium hover:bg-muted block w-full' },
+        () => row.getValue('name'),
+      ),
+  },
+  {
+    accessorKey: 'status',
+    header: () => h('div', {}, 'Status'),
+    cell: ({ row }) =>
+      h(
+        RouterLink,
+        { to: `/projects/${row.original.slug}`, class: 'font-medium hover:bg-muted block w-full' },
+        () => row.getValue('status'),
+      ),
+  },
+  {
+    accessorKey: 'collaborators',
+    header: () => h('div', {}, 'Collaborators'),
+    cell: ({ row }) =>
+      h(
+        RouterLink,
+        { to: `/projects/${row.original.slug}`, class: 'font-medium hover:bg-muted block w-full' },
+        () => JSON.stringify(row.getValue('collaborators')),
+      ),
+  },
+]
 </script>
 
 <template>
-  <div>
-    <h1>Projects Page</h1>
-    <RouterLink to="/">Go to home</RouterLink>
-    <ul>
-      <li v-for="project in projects" :key="project.id">{{ project.name }}</li>
-    </ul>
-  </div>
+  <DataTable v-if="projects" :columns="columns" :data="projects" />
 </template>

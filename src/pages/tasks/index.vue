@@ -5,6 +5,7 @@ import type { Tables } from '../../../database/types'
 import { h } from 'vue'
 import type { ColumnDef } from '@tanstack/vue-table'
 import DataTable from '@/components/ui/data-table/DataTable.vue'
+import { RouterLink } from 'vue-router'
 
 const tasks = ref<Tables<'tasks'>[] | null>(null)
 
@@ -22,37 +23,52 @@ const columns: ColumnDef<Tables<'tasks'>>[] = [
   {
     accessorKey: 'name',
     header: () => h('div', {}, 'Name'),
-    cell: ({ row }) => {
-      return h('div', { class: 'font-medium' }, row.getValue('name'))
-    },
+    cell: ({ row }) =>
+      h(
+        RouterLink,
+        { to: `/tasks/${row.original.id}`, class: 'font-medium hover:bg-muted block w-full' },
+        () => row.getValue('name'),
+      ),
   },
   {
     accessorKey: 'status',
     header: () => h('div', {}, 'Status'),
-    cell: ({ row }) => {
-      return h('div', { class: 'font-medium' }, row.getValue('status'))
-    },
+    cell: ({ row }) =>
+      h(
+        RouterLink,
+        { to: `/tasks/${row.original.id}`, class: 'font-medium hover:bg-muted block w-full' },
+        () => row.getValue('status'),
+      ),
   },
   {
     accessorKey: 'due_date',
     header: () => h('div', {}, 'Due Date'),
-    cell: ({ row }) => {
-      return h('div', { class: 'font-medium' }, row.getValue('due_date'))
-    },
+    cell: ({ row }) =>
+      h(
+        RouterLink,
+        { to: `/tasks/${row.original.id}`, class: 'font-medium hover:bg-muted block w-full' },
+        () => row.getValue('due_date'),
+      ),
   },
   {
     accessorKey: 'project_id',
     header: () => h('div', {}, 'Project'),
-    cell: ({ row }) => {
-      return h('div', { class: 'font-medium' }, row.getValue('project_id'))
-    },
+    cell: ({ row }) =>
+      h(
+        RouterLink,
+        { to: `/tasks/${row.original.id}`, class: 'font-medium hover:bg-muted block w-full' },
+        () => row.getValue('project_id'),
+      ),
   },
   {
     accessorKey: 'collaborators',
     header: () => h('div', {}, 'Collaborators'),
-    cell: ({ row }) => {
-      return h('div', { class: 'font-medium' }, JSON.stringify(row.getValue('collaborators')))
-    },
+    cell: ({ row }) =>
+      h(
+        RouterLink,
+        { to: `/tasks/${row.original.id}`, class: 'font-medium hover:bg-muted block w-full' },
+        () => JSON.stringify(row.getValue('collaborators')),
+      ),
   },
 ]
 </script>
