@@ -72,7 +72,7 @@ await getProjects()
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow v-for="task in project.tasks" :key="task">
+            <TableRow v-for="task in project.tasks" :key="task.id">
               <TableCell> Lorem ipsum dolor sit amet. </TableCell>
               <TableCell> In progress </TableCell>
               <TableCell> 22/08/2024 </TableCell>
