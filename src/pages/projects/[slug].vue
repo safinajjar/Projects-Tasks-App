@@ -4,6 +4,8 @@ import { type Project, projectQuery } from '@/utils/supaQueries'
 const route = useRoute('/projects/[slug]')
 const project = ref<Project | null>(null)
 
+usePageStore().pageData.title = `Project: ${project.value?.name || ''}`
+
 const getProjects = async () => {
   const { data, error } = await projectQuery(route.params.slug)
 
