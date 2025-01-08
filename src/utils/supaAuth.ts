@@ -28,7 +28,7 @@ export const register = async (formData: RegisterForm) => {
     }
   }
 
-  authStore.setAuth(data.session)
+  await authStore.setAuth(data.session)
 
   return true
 }
@@ -44,7 +44,7 @@ export const login = async (formData: LoginForm) => {
     return
   }
 
-  authStore.setAuth(data.session)
+  await authStore.setAuth(data.session)
 
   return true
 }
