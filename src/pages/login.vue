@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import supabase from '@/lib/supabaseClient'
-
+import { login } from '@/utils/supaAuth'
 const formData = ref({
   email: '',
   password: ''
@@ -8,18 +7,12 @@ const formData = ref({
 
 const router = useRouter()
 
-const login = async () => {
-  const { error } = await supabase.auth.signInWithPassword({
-    email: formData.value.email,
-    password: formData.value.password
-  })
+const signin = async () => {
+  const isLogged = await login(formData.value)
 
-  if (error) {
-    console.error(error)
-    return
+  if (isLogged) {
+    router.push('/')
   }
-
-  router.push('/')
 }
 </script>
 
@@ -36,7 +29,7 @@ const login = async () => {
           <Separator label="Or" />
         </div>
 
-        <form class="grid gap-4" @submit.prevent="login">
+        <form class="grid gap-4" @submit.prevent="signin">
           <div class="grid gap-2">
             <Label id="email" class="text-left">Email</Label>
             <Input
