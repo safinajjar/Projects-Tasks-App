@@ -9,8 +9,6 @@ const tasks = ref<TaskWithProjects | null>(null)
 const getTasks = async () => {
   const { data, error, status } = await tasksWithProjectsQuery
 
-  console.log('error', error)
-
   if (error) {
     useErrorStore().setError({ error, customCode: status })
   }
