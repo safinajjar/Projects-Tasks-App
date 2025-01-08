@@ -2,13 +2,13 @@
 const links = [
   { icon: 'lucide:house', title: 'Dashboard', to: '/' },
   { icon: 'lucide:building-2', title: 'Projects', to: '/projects' },
-  { icon: 'lucide:badge-check', title: 'My Tasks', to: '/tasks' },
+  { icon: 'lucide:badge-check', title: 'My Tasks', to: '/tasks' }
 ]
 
 const accountLinks = [
   { icon: 'lucide:user', title: 'Profile', to: '/profile' },
   { icon: 'lucide:settings', title: 'Settings', to: '/settings' },
-  { icon: 'lucide:log-out', title: 'Sign out', to: '/signout' },
+  { icon: 'lucide:log-out', title: 'Sign out' }
 ]
 </script>
 
