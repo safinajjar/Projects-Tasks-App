@@ -6,10 +6,4 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach(async () => {
-  // get session before each route
-  const { getSession } = useAuthStore()
-  await getSession()
-})
-
 export default router
