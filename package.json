@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
+    "preinstall": "bun x only-allow bun",
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
